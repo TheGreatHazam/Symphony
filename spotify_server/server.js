@@ -1,8 +1,9 @@
-const express = require('express');
-const SpotifyWebApi = require('spotify-web-api-node');
-const app = express();
+//start server: npm run devStart
+const express = require('express')
+const SpotifyWebApi = require('spotify-web-api-node')
+const app = express()
 
-app.post('/login', function(req,res) => {
+app.post('/login', (req,res) => {
     //pass the return URL as authorization code
     const code = req.body.code;
 
@@ -31,4 +32,6 @@ app.post('/login', function(req,res) => {
 
     spotifyApi.setAccessToken(data.body['access_token']);
     spotifyApi.setRefreshToken(data.body['refresh_token']);
+
+    app.listen(3001)
 })
