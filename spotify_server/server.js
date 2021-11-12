@@ -1,7 +1,29 @@
 //start server: npm run devStart
 const express = require('express')
 const SpotifyWebApi = require('spotify-web-api-node')
+const cors = require("cors")
+const bodyParser = require("body-parser")
+
 const app = express()
+app.use(cors())
+app.use(bodyParser.json())
+
+app.post('/refresh', (req, res) => {
+    const refreshToken = req.body.refreshToken
+    const spotifyApi = new SpotifyWebApi({
+        redirectUri: 'http://localhost:3000',
+        clientId: '3e13f2e9e17d478e8228d3773e8ed170',
+        clientSecret: '12cd651795814814b32e37caaeb37a6e',
+        refreshToken
+    })
+
+    spotifyApi.refreshAccessToken().then(
+        (data) => {
+            console.log(data.body)
+        }).catch(() => {
+        res.sendStatus(400)
+    })
+})
 
 app.post('/login', (req,res) => {
     //pass the return URL as authorization code
