@@ -17,7 +17,7 @@ export default function useAuth(code) {
 
             })
             .catch(() => {
-                //   If fail redirect to home page - Login page
+                //   If fail redirect to home page - Login_old page
                 window.location = "/";
             });
     }, [code]);
