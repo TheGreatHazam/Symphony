@@ -4,6 +4,7 @@ import Home from '../components/Home';
 import RedirectPage from '../components/RedirectPage';
 import Dashboard from '../components/Dashboard';
 import NotFoundPage from '../components/NotFoundPage';
+import UserProfile from "../components/UserProfile";
 
 class AppRouter extends React.Component {
   state = {
@@ -59,6 +60,12 @@ class AppRouter extends React.Component {
               render={(props) => (
                 <Dashboard isValidSession={this.isValidSession} {...props} />
               )}
+            />
+            <Route
+                path = "/profile"
+                render = {(props) => (
+                    <UserProfile {...props} />
+                )}
             />
             <Route component={NotFoundPage} />
           </Switch>

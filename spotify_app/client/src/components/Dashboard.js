@@ -12,6 +12,8 @@ import SearchResult from './SearchResult';
 import SearchForm from './SearchForm';
 import Header from './Header';
 import Loader from './Loader';
+import {Button} from "react-bootstrap";
+import {makeStyles} from "@material-ui/core/styles";
 
 const Dashboard = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,10 +71,19 @@ const Dashboard = (props) => {
   const { albums, artists, playlist } = props;
   const result = { albums, artists, playlist };
 
+  const goToUserProfile = () => {
+    history.push('/profile')
+  }
+
   return (
     <React.Fragment>
       {isValidSession() ? (
         <div>
+          <div style = {{float: 'right'}}>
+            <Button variant="info" type="submit" onClick = {goToUserProfile}>
+              My Profile
+            </Button>
+          </div>
           <Header />
           <SearchForm handleSearch={handleSearch} />
           <Loader show={isLoading}>Loading...</Loader>
