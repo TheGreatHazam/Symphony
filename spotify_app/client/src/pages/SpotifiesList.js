@@ -20,12 +20,15 @@ class SpotifiesList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
-
+       
         await api.getAllSpotifies().then(spotifies => {
+            for (let i = 0; i < spotifies.data.data.length; i++) {
             this.setState({
-                spotifies: spotifies.data.data,
+                spotifies: spotifies.data.data[i],
                 isLoading: false,
             })
+            console.log(spotifies.data.data[i]);
+        }
         })
     }
 
@@ -45,16 +48,17 @@ class SpotifiesList extends Component {
                 filterable: true,
             },
             {
-                Header: 'Rating',
-                accessor: 'rating',
+                Header: 'List of Songs',
+                accessor: 'listofplaysong',
                 filterable: true,
             },
             {
-                Header: 'Time',
-                accessor: 'time',
+                Header: 'List of Playlist',
+                accessor: 'listofplaylist',
                 Cell: props => <span>{props.value.join(' / ')}</span>,
             },
         ]
+        
 
         let showTable = true
         if (!spotifies.length) {
