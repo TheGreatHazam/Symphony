@@ -99,7 +99,7 @@ getSpotifyById = async (req, res) => {
                 .json({ success: false, error: `Spotify not found` })
         }
         return res.status(200).json({ success: true, data: spotify })
-    }).catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 getSpotifies = async (req, res) => {
