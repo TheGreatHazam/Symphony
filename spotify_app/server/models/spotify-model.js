@@ -10,4 +10,4 @@ const Spotify = new Schema(
     { timestamps: true },
 )
 
-module.exports = mongoose.model('spotify', Spotify)
+module.exports = mongoose.model('spotifies', Spotify)

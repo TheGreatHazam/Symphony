@@ -21,7 +21,7 @@ createSpotify = (req, res) => {
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: movie._id,
+                id: spotify._id,
                 message: 'Spotify created!',
             })
         })
@@ -102,17 +102,17 @@ getSpotifyById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getSpotify = async (req, res) => {
-    await Spotify.find({}, (err, spotify) => {
+getSpotifies = async (req, res) => {
+    await Spotify.find({}, (err, spotifies) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!spotify.length) {
+        if (!spotifies.length) {
             return res
                 .status(404)
                 .json({ success: false, error: `Spotify not found` })
         }
-        return res.status(200).json({ success: true, data: spotify })
+        return res.status(200).json({ success: true, data: spotifies })
     }).catch(err => console.log(err))
 }
 
@@ -120,6 +120,6 @@ module.exports = {
     createSpotify,
     updateSpotify,
     deleteSpotify,
-    getSpotify,
+    getSpotifies,
     getSpotifyById,
 }

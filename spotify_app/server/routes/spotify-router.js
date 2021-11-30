@@ -8,6 +8,6 @@ router.post('/spotify', SpotifyCtrl.createSpotify)
 router.put('/spotify/:id', SpotifyCtrl.updateSpotify)
 router.delete('/spotify/:id', SpotifyCtrl.deleteSpotify)
 router.get('/spotify/:id', SpotifyCtrl.getSpotifyById)
-router.get('/spotify', SpotifyCtrl.getSpotify)
+router.get('/spotifies', SpotifyCtrl.getSpotifies)
 
 module.exports = router
