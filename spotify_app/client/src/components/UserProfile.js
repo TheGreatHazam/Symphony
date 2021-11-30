@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
 import SpotifyGetPlaylist from "./SpotifyGetPlaylist";
+import Links from './Links'
 
 const UserProfile = (props) => {
     const{history} = props;
@@ -16,6 +17,7 @@ const UserProfile = (props) => {
             </Button>
             <div>
                 <SpotifyGetPlaylist/>
+                <Links />
             </div>
         </div>
     )
