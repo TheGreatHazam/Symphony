@@ -10,10 +10,12 @@ export default class RedirectPage extends React.Component {
         return history.push('/dashboard');
       }
 
-      const access_token = getParamValues(location.hash);
-      const expiryTime = new Date().getTime() + access_token.expires_in * 1000;
-      localStorage.setItem('params', JSON.stringify(access_token));
+      const paramObj = getParamValues(location.hash);
+      const expiryTime = new Date().getTime() + paramObj.expires_in * 1000;
+      localStorage.setItem('params', JSON.stringify(paramObj));
       localStorage.setItem('expiry_time', expiryTime);
+      localStorage.setItem('access_token', paramObj.access_token);
+      localStorage.setItem('token_type', paramObj.token_type);
       setExpiryTime(expiryTime);
       history.push('/dashboard');
     } catch (error) {
