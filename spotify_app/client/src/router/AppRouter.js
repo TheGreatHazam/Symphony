@@ -5,6 +5,9 @@ import RedirectPage from '../components/RedirectPage';
 import Dashboard from '../components/Dashboard';
 import NotFoundPage from '../components/NotFoundPage';
 import UserProfile from "../components/UserProfile";
+import SpotifiesList from "../pages/SpotifiesList";
+import SpotifiesInsert from "../pages/SpotifiesInsert";
+import SpotifiesUpdate from "../pages/SpotifiesUpdate";
 
 class AppRouter extends React.Component {
   state = {
@@ -66,6 +69,13 @@ class AppRouter extends React.Component {
                 render = {(props) => (
                     <UserProfile {...props} />
                 )}
+            />
+            <Route path="/spotifies/list" exact component={SpotifiesList} />
+            <Route path="/spotifies/create" exact component={SpotifiesInsert} />
+            <Route
+                path="/spotifies/update/:id"
+                exact
+                component={SpotifiesUpdate}
             />
             <Route component={NotFoundPage} />
           </Switch>

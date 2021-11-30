@@ -84,7 +84,8 @@ deleteSpotify = async (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: spotify })
-    }).catch(err => console.log(err))
+    }).clone()
+	.catch(err => console.log(err))
 }
 
 getSpotifyById = async (req, res) => {
