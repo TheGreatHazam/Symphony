@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react"
 import axios from "axios"
 import {Button} from "@material-ui/core";
-import {getParamValues} from "../utils/functions";
 
 const playlists_endpoint = "https://api.spotify.com/v1/me/playlists/";
 let playlistList = " ";
