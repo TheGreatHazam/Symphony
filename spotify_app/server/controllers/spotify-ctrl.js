@@ -61,7 +61,7 @@ updateSpotify = async (req, res) => {
                     id: spotify._id,
                     message: 'Spotify updated!',
                 })
-            }).clone()
+            })
             .catch(error => {
                 return res.status(404).json({
                     error,
@@ -84,8 +84,7 @@ deleteSpotify = async (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: spotify })
-    }).clone()
-	.catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 getSpotifyById = async (req, res) => {
