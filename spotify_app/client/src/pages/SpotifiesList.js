@@ -86,8 +86,8 @@ class SpotifiesList extends Component {
                 filterable: true,
             },
             {
-                Header: 'List of PlaySong',
-                accessor: 'listofplaysong',
+                Header: 'List of Song',
+                accessor: 'listofsong',
                 filterable: true,
             },
             {

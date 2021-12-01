@@ -42,7 +42,7 @@ class SpotifiesUpdate extends Component {
         this.state = {
             id: this.props.match.params.id,
             name: '',
-            listofplaysong: '',
+            listofsong: '',
         }
     }
 
@@ -52,22 +52,22 @@ class SpotifiesUpdate extends Component {
     }
 
     handleChangeInputListOfPlaySong = async event => {
-        const listofplaysong = event.target.value
+        const listofsong = event.target.value
             ? event.target.value
-            : this.state.listofplaysong
+            : this.state.listofsong
 
-        this.setState({ listofplaysong })
+        this.setState({ listofsong })
     }
 
     handleUpdateSpotify = async () => {
-        const { id, name, listofplaylist, listofplaysong } = this.state
-        const payload = { name, listofplaylist, listofplaysong}
+        const { id, name, listofplaylist, listofsong } = this.state
+        const payload = { name, listofplaylist, listofsong}
 
         await api.updateSpotifyById(id, payload).then(res => {
             window.alert(`Spotify updated successfully`)
             this.setState({
                 name: '',
-                listofplaysong: '',
+                listofsong: '',
             })
         })
     }
@@ -78,12 +78,12 @@ class SpotifiesUpdate extends Component {
 
         this.setState({
             name: spotify.data.data.name,
-            listofplaysong: spotify.data.data.listofplaysong,
+            listofsong: spotify.data.data.listofsong,
         })
     }
 
     render() {
-        const { name, listofplaylist, listofplaysong } = this.state
+        const { name, listofplaylist, listofsong } = this.state
         return (
             <Wrapper>
                 <Title>Update Spotify</Title>
@@ -103,7 +103,7 @@ class SpotifiesUpdate extends Component {
                     min="0"
                     max="10"
                     pattern="[0-9]+([,\.][0-9]+)?"
-                    value={listofplaysong}
+                    value={listofsong}
                     onChange={this.handleChangeInputListOfPlaySong}
                 />
 

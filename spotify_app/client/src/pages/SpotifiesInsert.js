@@ -41,7 +41,7 @@ class SpotifiesInsert extends Component {
 
         this.state = {
             name: '',
-            listofplaysong: '',
+            listofsong: '',
         }
     }
 
@@ -51,26 +51,26 @@ class SpotifiesInsert extends Component {
     }
 
     handleChangeInputListOfPlaySong = async event => {
-        const listofplaysong = event.target.value
-        this.setState({ listofplaysong })
+        const listofsong = event.target.value
+        this.setState({ listofsong })
     }
 
     handleIncludeSpotify = async () => {
-        const { name, listofplaylist, listofplaysong } = this.state
-        const arrayTime = listofplaysong.split('/')
-        const payload = { name, listofplaylist, listofplaysong: arrayTime }
+        const { name, listofplaylist, listofsong } = this.state
+        const arrayTime = listofsong.split('/')
+        const payload = { name, listofplaylist, listofsong: arrayTime }
 
         await api.insertSpotify(payload).then(res => {
             window.alert(`Spotify inserted successfully`)
             this.setState({
                 name: '',
-                listofplaysong: '',
+                listofsong: '',
             })
         })
     }
 
     render() {
-        const { name, listofplaylist, listofplaysong } = this.state
+        const { name, listofsong } = this.state
         return (
             <Wrapper>
                 <Title>Create Spotify</Title>
@@ -90,7 +90,7 @@ class SpotifiesInsert extends Component {
                    min="0"
                    max="10"
                    pattern="[0-9]+([,\.][0-9]+)?"
-                    value={listofplaysong}
+                    value={listofsong}
                     onChange={this.handleChangeInputListOfPlaySong}
                 />
 
