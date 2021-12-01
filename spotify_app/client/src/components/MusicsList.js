@@ -1,5 +1,21 @@
 import React from 'react';
-import {Table} from 'react-bootstrap'
+import {Dropdown, Table} from 'react-bootstrap'
+
+const addToPlaylist = () => {
+    return(
+        <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                Add to...
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+                <Dropdown.Item>New Playlist</Dropdown.Item>
+                <Dropdown.Item>Playlist 1</Dropdown.Item>
+                <Dropdown.Item>Playlist 2</Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>
+    )
+}
 
 const Musics = ({ musics }) => {
     return(
@@ -36,6 +52,7 @@ const Musics = ({ musics }) => {
 
                                         <td>{music.artists.map((artist) => artist.name).join(', ')}</td>
 
+                                        <td>{addToPlaylist()}</td>
                                      </React.Fragment>
                                     </tr>
                                 );
