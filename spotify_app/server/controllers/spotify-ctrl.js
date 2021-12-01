@@ -51,8 +51,7 @@ updateSpotify = async (req, res) => {
             })
         }
         spotify.name = body.name
-        spotify.listofplaylist = body.listofplaylist
-        spotify.listofsongs = body.listofsongs
+        spotify.listofsong = body.listofsong
         spotify
             .save()
             .then(() => {
@@ -84,7 +83,7 @@ deleteSpotify = async (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: spotify })
-    }).catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 getSpotifyById = async (req, res) => {
@@ -113,7 +112,7 @@ getSpotifies = async (req, res) => {
                 .json({ success: false, error: `Spotify not found` })
         }
         return res.status(200).json({ success: true, data: spotifies })
-    }).catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 module.exports = {

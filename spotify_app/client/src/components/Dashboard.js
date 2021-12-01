@@ -4,7 +4,7 @@ import {
   initiateGetResult,
   initiateLoadMoreAlbums,
   initiateLoadMorePlaylist,
-  initiateLoadMoreArtists
+  initiateLoadMoreArtists, initiateLoadMoreMusic
 } from '../actions/result';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -13,7 +13,6 @@ import SearchForm from './SearchForm';
 import Header from './Header';
 import Loader from './Loader';
 import {Button} from "react-bootstrap";
-import {makeStyles} from "@material-ui/core/styles";
 
 const Dashboard = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +38,7 @@ const Dashboard = (props) => {
 
   const loadMore = async (type) => {
     if (isValidSession()) {
-      const { dispatch, albums, artists, playlist } = props;
+      const { dispatch, albums, artists, playlist, music} = props;
       setIsLoading(true);
       switch (type) {
         case 'albums':
@@ -50,6 +49,9 @@ const Dashboard = (props) => {
           break;
         case 'playlist':
           await dispatch(initiateLoadMorePlaylist(playlist.next));
+          break;
+        case 'music':
+          await dispatch(initiateLoadMoreMusic(music.next));
           break;
         default:
       }
@@ -68,8 +70,8 @@ const Dashboard = (props) => {
     setSelectedCategory(category);
   };
 
-  const { albums, artists, playlist } = props;
-  const result = { albums, artists, playlist };
+  const { albums, artists, playlist, musics } = props;
+  const result = { albums, artists, playlist, musics };
 
   const goToUserProfile = () => {
     history.push('/profile')
@@ -113,7 +115,8 @@ const mapStateToProps = (state) => {
   return {
     albums: state.albums,
     artists: state.artists,
-    playlist: state.playlist
+    playlist: state.playlist,
+    musics: state.musics,
   };
 };
 
