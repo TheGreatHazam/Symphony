@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import AlbumsList from './AlbumsList';
 import ArtistsList from './ArtistsList';
 import PlayList from './PlayList';
+import Musics from "./MusicsList";
 
 const SearchResult = (props) => {
   const {
@@ -14,7 +15,7 @@ const SearchResult = (props) => {
     setCategory,
     selectedCategory
   } = props;
-  const { albums, artists, playlist } = result;
+  const { albums, artists, playlist, musics } = result;
 
   if (!isValidSession()) {
     return (
@@ -62,6 +63,16 @@ const SearchResult = (props) => {
             PlayLists
           </button>
         )}
+          {!_.isEmpty(musics.items) && (
+              <button
+                  className={`${
+                      selectedCategory === 'musics' ? 'btn active' : 'btn'
+                  }`}
+                  onClick={() => setCategory('musics')}
+              >
+                  Musics
+              </button>
+          )}
       </div>
       <div className={`${selectedCategory === 'albums' ? '' : 'hide'}`}>
         {albums && <AlbumsList albums={albums} />}
@@ -72,6 +83,9 @@ const SearchResult = (props) => {
       <div className={`${selectedCategory === 'playlist' ? '' : 'hide'}`}>
         {playlist && <PlayList playlist={playlist} />}
       </div>
+        <div className={`${selectedCategory === 'musics' ? '' : 'hide'}`}>
+            {musics && <Musics musics={musics} />}
+        </div>
       {!_.isEmpty(result[selectedCategory]) &&
         !_.isEmpty(result[selectedCategory].next) && (
           <div className="load-more" onClick={() => loadMore(selectedCategory)}>

@@ -132,7 +132,8 @@ body {
 
 .albums,
 .artists,
-.playlist {
+.playlist,
+.musics {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
