@@ -20,7 +20,6 @@ class SpotifiesList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
-       
         await api.getAllSpotifies().then(spotifies => {
             for (let i = 0; i < spotifies.data.data.length; i++) {
             this.setState({
@@ -58,7 +57,6 @@ class SpotifiesList extends Component {
                 Cell: props => <span>{props.value.join(' / ')}</span>,
             },
         ]
-        
 
         let showTable = true
         if (!spotifies.length) {
