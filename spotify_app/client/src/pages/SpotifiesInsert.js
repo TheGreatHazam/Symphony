@@ -41,7 +41,6 @@ class SpotifiesInsert extends Component {
 
         this.state = {
             name: '',
-            listofplaylist: '',
             listofplaysong: '',
         }
     }
@@ -49,14 +48,6 @@ class SpotifiesInsert extends Component {
     handleChangeInputName = async event => {
         const name = event.target.value
         this.setState({ name })
-    }
-
-    handleChangeInputListOfPlaylist= async event => {
-        const listofplaylist = event.target.validity.valid
-            ? event.target.value
-            : this.state.listofplaylist
-
-        this.setState({ listofplaylist })
     }
 
     handleChangeInputListOfPlaySong = async event => {
@@ -73,7 +64,6 @@ class SpotifiesInsert extends Component {
             window.alert(`Spotify inserted successfully`)
             this.setState({
                 name: '',
-                listofplaylist: '',
                 listofplaysong: '',
             })
         })
@@ -90,18 +80,6 @@ class SpotifiesInsert extends Component {
                     type="text"
                     value={name}
                     onChange={this.handleChangeInputName}
-                />
-
-                <Label>List of PlayList : </Label>
-                <InputText
-                    type="text"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
-                    value={listofplaylist}
-                    onChange={this.handleChangeInputListOfPlaylist}
                 />
 
                 <Label>List of Song: </Label>

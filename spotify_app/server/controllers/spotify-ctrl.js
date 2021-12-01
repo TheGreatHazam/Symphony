@@ -51,7 +51,6 @@ updateSpotify = async (req, res) => {
             })
         }
         spotify.name = body.name
-        spotify.listofplaylist = body.listofplaylist
         spotify.listofsongs = body.listofsongs
         spotify
             .save()

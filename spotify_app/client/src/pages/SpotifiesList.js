@@ -91,11 +91,6 @@ class SpotifiesList extends Component {
                 filterable: true,
             },
             {
-                Header: 'List of PlayList',
-                accessor: 'listofplaylist',
-                filterable: true,
-            },
-            {
                 Header: '',
                 accessor: '',
                 Cell: function(props) {
