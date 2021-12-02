@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000/api',
+    baseURL: 'http://3.143.218.228::8000/api',
 })
 
 export const insertSpotify = payload => api.post(`/spotify`, payload)

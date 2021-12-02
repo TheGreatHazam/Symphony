@@ -37,7 +37,7 @@ class DeleteSpotify extends Component {
 
         if (
             window.confirm(
-                `Do tou want to delete the spotify permanently?`,
+                `Do you want to delete the spotify permanently?`,
             )
         ) {
             api.deleteSpotifyById(this.props.id)
@@ -61,7 +61,7 @@ class SpotifiesList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
-
+	console.log(api.getAllSpotifies());
         await api.getAllSpotifies().then(spotifies => {
             this.setState({
                 spotifies: spotifies.data.data,

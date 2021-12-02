@@ -59,7 +59,7 @@ class SpotifiesInsert extends Component {
         const { playlistname, listofsong } = this.state
         const arrayTime = listofsong.split('/')
         const payload = { playlistname,listofsong: arrayTime }
-
+	console.log(payload);
         await api.insertSpotify(payload).then(res => {
             window.alert(`Spotify inserted successfully`)
             this.setState({
