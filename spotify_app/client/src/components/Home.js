@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import Header from './Header';
 import {makeStyles} from "@material-ui/core/styles";
-import RedirectPage from "./RedirectPage";
 
 const useStyles = makeStyles({
   login: {

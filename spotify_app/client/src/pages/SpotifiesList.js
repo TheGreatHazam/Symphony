@@ -74,15 +74,10 @@ class SpotifiesList extends Component {
         const { spotifies, isLoading } = this.state
         console.log('TCL: SpotifiesList -> render -> spotifies', spotifies)
 
-        const columns = [
+        const columns = [ 
             {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
-            {
-                Header: 'Name',
-                accessor: 'name',
+                Header: 'Playlist Name',
+                accessor: 'playlistname',
                 filterable: true,
             },
             {

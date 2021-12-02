@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const Spotify = new Schema(
     {
-        name: { type: String, required: true },
+        playlistname: { type: String, required: true },
         listofsong: { type: [String], required: true },
     },
     { timestamps: true },

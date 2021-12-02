@@ -9,7 +9,7 @@ createSpotify = (req, res) => {
             error: 'You must provide a spotify',
         })
     }
-
+    
     const spotify = new Spotify(body)
 
     if (!spotify) {
@@ -50,7 +50,7 @@ updateSpotify = async (req, res) => {
                 message: 'Spotify not found!',
             })
         }
-        spotify.name = body.name
+        spotify.playlistname = body.playlistname
         spotify.listofsong = body.listofsong
         spotify
             .save()

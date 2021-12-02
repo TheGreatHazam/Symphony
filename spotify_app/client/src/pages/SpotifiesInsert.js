@@ -40,14 +40,14 @@ class SpotifiesInsert extends Component {
         super(props)
 
         this.state = {
-            name: '',
+            playlistname: '',
             listofsong: '',
         }
     }
 
-    handleChangeInputName = async event => {
-        const name = event.target.value
-        this.setState({ name })
+    handleChangeInputPlayListName = async event => {
+        const playlistname = event.target.value
+        this.setState({ playlistname })
     }
 
     handleChangeInputListOfPlaySong = async event => {
@@ -56,30 +56,30 @@ class SpotifiesInsert extends Component {
     }
 
     handleIncludeSpotify = async () => {
-        const { name, listofplaylist, listofsong } = this.state
+        const { playlistname, listofsong } = this.state
         const arrayTime = listofsong.split('/')
-        const payload = { name, listofplaylist, listofsong: arrayTime }
+        const payload = { playlistname,listofsong: arrayTime }
 
         await api.insertSpotify(payload).then(res => {
             window.alert(`Spotify inserted successfully`)
             this.setState({
-                name: '',
+                playlistname: '',
                 listofsong: '',
             })
         })
     }
 
     render() {
-        const { name, listofsong } = this.state
+        const { playlistname, listofsong } = this.state
         return (
             <Wrapper>
                 <Title>Create Spotify</Title>
 
-                <Label>Name: </Label>
+                <Label>PlayListName: </Label>
                 <InputText
                     type="text"
-                    value={name}
-                    onChange={this.handleChangeInputName}
+                    value={playlistname}
+                    onChange={this.handleChangeInputPlayListName}
                 />
 
                 <Label>List of Song: </Label>

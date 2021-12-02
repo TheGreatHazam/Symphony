@@ -41,14 +41,14 @@ class SpotifiesUpdate extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            name: '',
+            playlistname: '',
             listofsong: '',
         }
     }
 
     handleChangeInputName = async event => {
-        const name = event.target.value
-        this.setState({ name })
+        const playlistname = event.target.value
+        this.setState({ playlistname })
     }
 
     handleChangeInputListOfPlaySong = async event => {
@@ -60,13 +60,13 @@ class SpotifiesUpdate extends Component {
     }
 
     handleUpdateSpotify = async () => {
-        const { id, name, listofplaylist, listofsong } = this.state
-        const payload = { name, listofplaylist, listofsong}
+        const { id, playlistname, listofsong } = this.state
+        const payload = { playlistname, listofsong}
 
         await api.updateSpotifyById(id, payload).then(res => {
             window.alert(`Spotify updated successfully`)
             this.setState({
-                name: '',
+                playlistname: '',
                 listofsong: '',
             })
         })
@@ -77,13 +77,13 @@ class SpotifiesUpdate extends Component {
         const spotify = await api.getSpotifyById(id)
 
         this.setState({
-            name: spotify.data.data.name,
+            playlistname: spotify.data.data.playlistname,
             listofsong: spotify.data.data.listofsong,
         })
     }
 
     render() {
-        const { name, listofplaylist, listofsong } = this.state
+        const { playlistname, listofsong } = this.state
         return (
             <Wrapper>
                 <Title>Update Spotify</Title>
@@ -91,7 +91,7 @@ class SpotifiesUpdate extends Component {
                 <Label>Name: </Label>
                 <InputText
                     type="text"
-                    value={name}
+                    value={playlistname}
                     onChange={this.handleChangeInputName}
                 />
 
