@@ -37,7 +37,7 @@ class DeleteSpotify extends Component {
 
         if (
             window.confirm(
-                `Do tou want to delete the movie ${this.props.id} permanently?`,
+                `Do tou want to delete the spotify permanently?`,
             )
         ) {
             api.deleteSpotifyById(this.props.id)
