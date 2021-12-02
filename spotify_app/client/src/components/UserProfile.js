@@ -39,13 +39,13 @@ const UserProfile = (props) => {
                     <Collapse>
                         <List>
                             <Item>
-                                <Link to="/spotifies/list" className="nav-link">
-                                    List Spotifies
+                                <Link to="/spotifies/list" className="btn btn-primary">
+                                    Show all playlists
                                 </Link>
                             </Item>
                             <Item>
-                                <Link to="/spotifies/create" className="nav-link">
-                                    Create Spotifies
+                                <Link to="/spotifies/create" className="btn btn-primary">
+                                    Create playlists
                                 </Link>
                             </Item>
                             <Item>

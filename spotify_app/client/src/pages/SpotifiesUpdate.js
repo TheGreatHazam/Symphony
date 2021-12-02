@@ -107,7 +107,7 @@ class SpotifiesUpdate extends Component {
                     onChange={this.handleChangeInputListOfPlaySong}
                 />
 
-                <Button onClick={this.handleUpdateSpotify}>Update Spotify</Button>
+                <Button onClick={this.handleUpdateSpotify}>Update</Button>
                 <CancelButton href={'/spotifies/list'}>Cancel</CancelButton>
             </Wrapper>
         )

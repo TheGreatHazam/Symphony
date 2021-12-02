@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import ReactTable from "react-table-6";  
 import "react-table-6/react-table.css"
+import {Button} from "react-bootstrap";
 
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
@@ -49,6 +50,10 @@ class DeleteSpotify extends Component {
         return <Delete onClick={this.deleteUser}>Delete</Delete>
     }
 }
+const goToSearch = () => {
+    window.location = ('/redirect')
+}
+
 class SpotifiesList extends Component {
     constructor(props) {
         super(props)
@@ -58,6 +63,8 @@ class SpotifiesList extends Component {
             isLoading: false,
         }
     }
+
+
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
@@ -115,18 +122,25 @@ class SpotifiesList extends Component {
         }
 
         return (
-            <Wrapper>
-                {showTable && (
-                    <ReactTable
-                        data={spotifies}
-                        columns={columns}
-                        loading={isLoading}
-                        defaultPageSize={10}
-                        showPageSizeOptions={true}
-                        minRows={0}
-                    />
-                )}
-            </Wrapper>
+            <>
+                <Wrapper>
+                    {showTable && (
+                        <ReactTable
+                            data={spotifies}
+                            columns={columns}
+                            loading={isLoading}
+                            defaultPageSize={5}
+                            showPageSizeOptions={true}
+                            minRows={1}
+                        />
+                    )}
+                </Wrapper>
+
+                <Button variant="info" type="submit" onClick = {goToSearch}>
+                    Return to Music Search
+                </Button>
+            </>
+
         )
     }
 }
