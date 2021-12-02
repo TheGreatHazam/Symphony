@@ -40,13 +40,25 @@ const createNewPlaylist = (music) => {
     playlistID += 1;
 
     console.log(listOfPlayList);
+
+    postToDB();
 }
 
 const addToExistingPlaylist = (music, i) => {
     listOfPlayList[i].listOfMusic.push(music);
+    postToDB();
+}
+
+const postToDB = () => {
+    //send the whole list of playlist to database
+}
+
+const getFromDB = () => {
+    //set list of playlist to retrieved from database
 }
 
 const Musics = ({ musics }) => {
+    getFromDB();
     return(
         <>
             <React.Fragment>
