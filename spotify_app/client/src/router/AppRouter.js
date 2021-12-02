@@ -72,10 +72,7 @@ class AppRouter extends React.Component {
             />
             <Route path="/spotifies/list" exact component={SpotifiesList} />
             <Route path="/spotifies/create" exact component={SpotifiesInsert} />
-            <Route
-                path="/spotifies/update/:id"
-                exact
-                component={SpotifiesUpdate}
+            <Route path="/spotifies/update/:id" exact component={SpotifiesUpdate}
             />
             <Route component={NotFoundPage} />
           </Switch>

@@ -1,7 +1,29 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
-import SpotifyGetPlaylist from "./SpotifyGetPlaylist";
-import Links from './Links'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+
+const Container = styled.div.attrs({
+    className: 'container',
+})``
+
+const Nav = styled.nav.attrs({
+    className: 'navbar navbar-expand-lg navbar-dark bg-dark',
+})`
+    margin-bottom: 20 px;
+`
+const Collapse = styled.div.attrs({
+    className: 'collpase navbar-collapse',
+})``
+
+const List = styled.div.attrs({
+    className: 'navbar-nav mr-auto',
+})``
+
+const Item = styled.div.attrs({
+    className: 'collpase navbar-collapse',
+})``
 
 const UserProfile = (props) => {
     const{history} = props;
@@ -11,15 +33,31 @@ const UserProfile = (props) => {
     }
 
     return(
-        <div>
-            <Button variant="info" type="submit" onClick = {goToSearch}>
-                Return to Music Search
-            </Button>
-            <div>
-                <SpotifyGetPlaylist/>
-                <Links />
-            </div>
-        </div>
+        <Container>
+            <Nav>
+                <React.Fragment>
+                    <Collapse>
+                        <List>
+                            <Item>
+                                <Link to="/spotifies/list" className="nav-link">
+                                    List Spotifies
+                                </Link>
+                            </Item>
+                            <Item>
+                                <Link to="/spotifies/create" className="nav-link">
+                                    Create Spotifies
+                                </Link>
+                            </Item>
+                            <Item>
+                                <Button variant="info" type="submit" onClick = {goToSearch}>
+                                    Return to Music Search
+                                </Button>
+                            </Item>
+                        </List>
+                    </Collapse>
+                </React.Fragment>
+            </Nav>
+        </Container>
     )
 };
 export default UserProfile;

@@ -1,13 +1,54 @@
 import React, { Component } from 'react'
-import ReactTable from 'react-table'
 import api from '../api'
 
 import styled from 'styled-components'
 
+import ReactTable from "react-table-6";  
+import "react-table-6/react-table.css"
+
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `
+const Update = styled.div`
+    color: #ef9b0f;
+    cursor: pointer;
+`
 
+const Delete = styled.div`
+    color: #ff0000;
+    cursor: pointer;
+`
+
+class UpdateSpotify extends Component {
+    updateUser = event => {
+        event.preventDefault()
+
+        window.location.href = `/spotifies/update/${this.props.id}`
+    }
+
+    render() {
+        return <Update onClick={this.updateUser}>Update</Update>
+    }
+}
+
+class DeleteSpotify extends Component {
+    deleteUser = event => {
+        event.preventDefault()
+
+        if (
+            window.confirm(
+                `Do tou want to delete the movie ${this.props.id} permanently?`,
+            )
+        ) {
+            api.deleteSpotifyById(this.props.id)
+            window.location.reload()
+        }
+    }
+
+    render() {
+        return <Delete onClick={this.deleteUser}>Delete</Delete>
+    }
+}
 class SpotifiesList extends Component {
     constructor(props) {
         super(props)
@@ -20,14 +61,12 @@ class SpotifiesList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
+
         await api.getAllSpotifies().then(spotifies => {
-            for (let i = 0; i < spotifies.data.data.length; i++) {
             this.setState({
-                spotifies: spotifies.data.data[i],
+                spotifies: spotifies.data.data,
                 isLoading: false,
             })
-            console.log(spotifies.data.data[i]);
-        }
         })
     }
 
@@ -35,26 +74,38 @@ class SpotifiesList extends Component {
         const { spotifies, isLoading } = this.state
         console.log('TCL: SpotifiesList -> render -> spotifies', spotifies)
 
-        const columns = [
+        const columns = [ 
             {
-                Header: 'ID',
-                accessor: '_id',
+                Header: 'Playlist Name',
+                accessor: 'playlistname',
                 filterable: true,
             },
             {
-                Header: 'Name',
-                accessor: 'name',
+                Header: 'List of Song',
+                accessor: 'listofsong',
                 filterable: true,
             },
             {
-                Header: 'List of Songs',
-                accessor: 'listofplaysong',
-                filterable: true,
+                Header: '',
+                accessor: '',
+                Cell: function(props) {
+                    return (
+                        <span>
+                            <DeleteSpotify id={props.original._id} />
+                        </span>
+                    )
+                },
             },
             {
-                Header: 'List of Playlist',
-                accessor: 'listofplaylist',
-                Cell: props => <span>{props.value.join(' / ')}</span>,
+                Header: '',
+                accessor: '',
+                Cell: function(props) {
+                    return (
+                        <span>
+                            <UpdateSpotify id={props.original._id} />
+                        </span>
+                    )
+                },
             },
         ]
 
@@ -80,4 +131,4 @@ class SpotifiesList extends Component {
     }
 }
 
-export default SpotifiesList;
+export default SpotifiesList

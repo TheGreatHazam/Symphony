@@ -9,7 +9,7 @@ createSpotify = (req, res) => {
             error: 'You must provide a spotify',
         })
     }
-
+    
     const spotify = new Spotify(body)
 
     if (!spotify) {
@@ -50,9 +50,8 @@ updateSpotify = async (req, res) => {
                 message: 'Spotify not found!',
             })
         }
-        spotify.name = body.name
-        spotify.listofplaylist = body.listofplaylist
-        spotify.listofsongs = body.listofsongs
+        spotify.playlistname = body.playlistname
+        spotify.listofsong = body.listofsong
         spotify
             .save()
             .then(() => {
@@ -61,7 +60,7 @@ updateSpotify = async (req, res) => {
                     id: spotify._id,
                     message: 'Spotify updated!',
                 })
-            }).clone()
+            })
             .catch(error => {
                 return res.status(404).json({
                     error,
@@ -84,8 +83,7 @@ deleteSpotify = async (req, res) => {
         }
 
         return res.status(200).json({ success: true, data: spotify })
-    }).clone()
-	.catch(err => console.log(err))
+    }).clone().catch(err => console.log(err))
 }
 
 getSpotifyById = async (req, res) => {
