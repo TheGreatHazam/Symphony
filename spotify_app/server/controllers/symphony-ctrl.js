@@ -1,7 +1,6 @@
 const Symphony = require('../models/symphony-model')
 
 createSymphony = (req, res) => {
-    con
     const body = req.body
 
     if (!body) {

@@ -6,6 +6,7 @@ const db = require('./db')
 const symphonyRouter = require('./routes/symphony-router')
 
 const app = express()
+const hostname = 'http://ec2-3-143-218-228.us-east-2.compute.amazon.com';
 const apiPort = 8000
 
 app.use(bodyParser.urlencoded({ extended: true }))

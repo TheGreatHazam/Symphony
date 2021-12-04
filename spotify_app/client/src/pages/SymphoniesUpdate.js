@@ -63,7 +63,7 @@ class SymphoniesUpdate extends Component {
         const { id, playlistname, listofsong } = this.state
         const payload = { playlistname, listofsong}
 
-        await api.updateSymphoniesById(id, payload).then(res => {
+        await api.updateSymphonyById(id, payload).then(res => {
             window.alert(`Symphonies updated successfully`)
             this.setState({
                 playlistname: '',
@@ -74,7 +74,7 @@ class SymphoniesUpdate extends Component {
 
     componentDidMount = async () => {
         const { id } = this.state
-        const symphony = await api.getSymphoniesById(id)
+        const symphony = await api.getSymphonyById(id)
 
         this.setState({
             playlistname: symphony.data.data.playlistname,

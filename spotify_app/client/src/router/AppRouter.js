@@ -5,7 +5,7 @@ import RedirectPage from '../components/RedirectPage';
 import Dashboard from '../components/Dashboard';
 import NotFoundPage from '../components/NotFoundPage';
 import UserProfile from "../components/UserProfile";
-import SymphoniesList from "../pages/SymphoniessList";
+import SymphoniesList from "../pages/SymphoniesList";
 import SymphoniesInsert from "../pages/SymphoniesInsert";
 import SymphoniesUpdate from "../pages/SymphoniesUpdate";
 
