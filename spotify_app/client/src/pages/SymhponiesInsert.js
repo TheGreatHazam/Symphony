@@ -35,36 +35,33 @@ const CancelButton = styled.a.attrs({
     margin: 15px 15px 15px 5px;
 `
 
-class SpotifiesUpdate extends Component {
+class SymphoniesInsert extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            id: this.props.match.params.id,
             playlistname: '',
             listofsong: '',
         }
     }
 
-    handleChangeInputName = async event => {
+    handleChangeInputPlayListName = async event => {
         const playlistname = event.target.value
         this.setState({ playlistname })
     }
 
     handleChangeInputListOfPlaySong = async event => {
         const listofsong = event.target.value
-            ? event.target.value
-            : this.state.listofsong
-
         this.setState({ listofsong })
     }
 
-    handleUpdateSpotify = async () => {
-        const { id, playlistname, listofsong } = this.state
-        const payload = { playlistname, listofsong}
-
-        await api.updateSpotifyById(id, payload).then(res => {
-            window.alert(`Spotify updated successfully`)
+    handleIncludeSymphony = async () => {
+        const { playlistname, listofsong } = this.state
+        const arrayTime = listofsong.split('/')
+        const payload = { playlistname,listofsong: arrayTime }
+	console.log(payload);
+        await api.insertSymphony(payload).then(res => {
+            window.alert(`Inserted successfully`)
             this.setState({
                 playlistname: '',
                 listofsong: '',
@@ -72,46 +69,37 @@ class SpotifiesUpdate extends Component {
         })
     }
 
-    componentDidMount = async () => {
-        const { id } = this.state
-        const spotify = await api.getSpotifyById(id)
-
-        this.setState({
-            playlistname: spotify.data.data.playlistname,
-            listofsong: spotify.data.data.listofsong,
-        })
-    }
-
     render() {
         const { playlistname, listofsong } = this.state
         return (
             <Wrapper>
-                <Title>Update Spotify</Title>
+                <Title>Create </Title>
 
-                <Label>Name: </Label>
+                <Label>PlayListName: </Label>
                 <InputText
                     type="text"
                     value={playlistname}
-                    onChange={this.handleChangeInputName}
+                    onChange={this.handleChangeInputPlayListName}
                 />
 
-                <Label>List of PlaySong: </Label>
+                <Label>List of Song: </Label>
                 <InputText
-                    type="text"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
+                   type="text"
+                   step="0.1"
+                   lang="en-US"
+                   min="0"
+                   max="10"
+                   pattern="[0-9]+([,\.][0-9]+)?"
                     value={listofsong}
                     onChange={this.handleChangeInputListOfPlaySong}
                 />
 
-                <Button onClick={this.handleUpdateSpotify}>Update</Button>
-                <CancelButton href={'/spotifies/list'}>Cancel</CancelButton>
+                <Button onClick={this.handleIncludeSymphony}>Add </Button>
+                <CancelButton href={'/symphonies/list'}>Cancel</CancelButton>
             </Wrapper>
         )
     }
 }
 
-export default SpotifiesUpdate
+export default SymphoniesInsert
+

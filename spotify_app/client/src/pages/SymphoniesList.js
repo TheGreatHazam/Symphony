@@ -20,11 +20,11 @@ const Delete = styled.div`
     cursor: pointer;
 `
 
-class UpdateSpotify extends Component {
+class UpdateSymphony extends Component {
     updateUser = event => {
         event.preventDefault()
 
-        window.location.href = `/spotifies/update/${this.props.id}`
+        window.location.href = `/symphonies/update/${this.props.id}`
     }
 
     render() {
@@ -32,7 +32,7 @@ class UpdateSpotify extends Component {
     }
 }
 
-class DeleteSpotify extends Component {
+class DeleteSymphony extends Component {
     deleteUser = event => {
         event.preventDefault()
 
@@ -41,7 +41,7 @@ class DeleteSpotify extends Component {
                 `Do you want to delete the playlist permanently?`,
             )
         ) {
-            api.deleteSpotifyById(this.props.id)
+            api.deleteSymphonyById(this.props.id)
             window.location.reload()
         }
     }
@@ -54,11 +54,11 @@ const goToSearch = () => {
     window.location = ('/redirect')
 }
 
-class SpotifiesList extends Component {
+class SymphoniesList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            spotifies: [],
+            symphonies: [],
             columns: [],
             isLoading: false,
         }
@@ -68,18 +68,18 @@ class SpotifiesList extends Component {
 
     componentDidMount = async () => {
         this.setState({ isLoading: true })
-	console.log(api.getAllSpotifies());
-        await api.getAllSpotifies().then(spotifies => {
+	console.log(api.getAllSymphonies());
+        await api.getAllSymphonies().then(symphonies => {
             this.setState({
-                spotifies: spotifies.data.data,
+                symphonies: symphonies.data.data,
                 isLoading: false,
             })
         })
     }
 
     render() {
-        const { spotifies, isLoading } = this.state
-        console.log('TCL: SpotifiesList -> render -> spotifies', spotifies)
+        const { symphonies, isLoading } = this.state
+        console.log('TCL: SymphoniesList -> render -> symphonies', symphonies)
 
         const columns = [ 
             {
@@ -98,7 +98,7 @@ class SpotifiesList extends Component {
                 Cell: function(props) {
                     return (
                         <span>
-                            <DeleteSpotify id={props.original._id} />
+                            <DeleteSymphony id={props.original._id} />
                         </span>
                     )
                 },
@@ -109,7 +109,7 @@ class SpotifiesList extends Component {
                 Cell: function(props) {
                     return (
                         <span>
-                            <UpdateSpotify id={props.original._id} />
+                            <UpdateSymphony id={props.original._id} />
                         </span>
                     )
                 },
@@ -117,7 +117,7 @@ class SpotifiesList extends Component {
         ]
 
         let showTable = true
-        if (!spotifies.length) {
+        if (!symphonies.length) {
             showTable = false
         }
 
@@ -126,7 +126,7 @@ class SpotifiesList extends Component {
                 <Wrapper>
                     {showTable && (
                         <ReactTable
-                            data={spotifies}
+                            data={symphonies}
                             columns={columns}
                             loading={isLoading}
                             defaultPageSize={5}
@@ -145,4 +145,5 @@ class SpotifiesList extends Component {
     }
 }
 
-export default SpotifiesList
+export default SymphoniesList
+

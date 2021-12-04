@@ -1,39 +1,40 @@
-const Spotify = require('../models/spotify-model')
+const Symphony = require('../models/symphony-model')
 
-createSpotify = (req, res) => {
+createSymphony = (req, res) => {
+    con
     const body = req.body
 
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a spotify',
+            error: 'You must provide a Symphony',
         })
     }
     
-    const spotify = new Spotify(body)
+    const symphony = new Symphony(body)
 
-    if (!spotify) {
+    if (!symphony) {
         return res.status(400).json({ success: false, error: err })
     }
 
-    spotify
+    symphony
         .save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: spotify._id,
-                message: 'Spotify created!',
+                id: symphony._id,
+                message: 'Symphony created!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Spotify not created!',
+                message: 'Symphony not created!',
             })
         })
 }
 
-updateSpotify = async (req, res) => {
+updateSymphony= async (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -43,82 +44,87 @@ updateSpotify = async (req, res) => {
         })
     }
 
-    Spotify.findOne({ _id: req.params.id }, (err, spotify) => {
+    Symphony.findOne({ _id: req.params.id }, (err, symphony) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Spotify not found!',
+                message: 'Symphony not found!',
             })
         }
-        spotify.playlistname = body.playlistname
-        spotify.listofsong = body.listofsong
-        spotify
+        symphony.playlistname = body.playlistname
+        symphony.listofsong = body.listofsong
+        symphony
             .save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: spotify._id,
-                    message: 'Spotify updated!',
+                    id: symphony._id,
+                    message: 'Symphony updated!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
-                    message: 'Spotify not updated!',
+                    message: 'Symphony not updated!',
                 })
             })
     })
 }
 
-deleteSpotify = async (req, res) => {
-    await Spotify.findOneAndDelete({ _id: req.params.id }, (err, spotify) => {
+deleteSymphony = async (req, res) => {
+    await Symphony.findOneAndDelete({ _id: req.params.id }, (err, symphony) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!spotify) {
+        if (!symphony) {
             return res
                 .status(404)
-                .json({ success: false, error: `Spotify not found` })
+                .json({ success: false, error: `Symphony not found` })
         }
 
-        return res.status(200).json({ success: true, data: spotify })
+        return res.status(200).json({ success: true, data: symphony })
     }).clone().catch(err => console.log(err))
 }
 
-getSpotifyById = async (req, res) => {
-    await Spotify.findOne({ _id: req.params.id }, (err, spotify) => {
+getSymphonyById = async (req, res) => {
+    await Symphony.findOne({ _id: req.params.id }, (err, symphony) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!spotify) {
+        if (!symphony) {
             return res
                 .status(404)
-                .json({ success: false, error: `Spotify not found` })
+                .json({ success: false, error: `Symphony not found` })
         }
-        return res.status(200).json({ success: true, data: spotify })
+        return res.status(200).json({ success: true, data: symphony })
     }).clone().catch(err => console.log(err))
 }
 
-getSpotifies = async (req, res) => {
-    await Spotify.find({}, (err, spotifies) => {
+getSymphonies = async (req, res) => {
+    await Symphony.find({}, (err, symphonies) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!spotifies.length) {
+        if (!symphonies.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Spotify not found` })
+                .json({ success: false, error: `Symphony not found` })
         }
-        return res.status(200).json({ success: true, data: spotifies })
+        return res.status(200).json({ success: true, data: symphonies })
     }).clone().catch(err => console.log(err))
+}
+
+getUrl = async (req, res) => {
+
 }
 
 module.exports = {
-    createSpotify,
-    updateSpotify,
-    deleteSpotify,
-    getSpotifies,
-    getSpotifyById,
+    createSymphony,
+    updateSymphony,
+    deleteSymphony,
+    getSymphonies,
+    getSymphonyById,
 }
+
