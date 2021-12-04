@@ -38,7 +38,7 @@ class DeleteSpotify extends Component {
 
         if (
             window.confirm(
-                `Do you want to delete the spotify permanently?`,
+                `Do you want to delete the playlist permanently?`,
             )
         ) {
             api.deleteSpotifyById(this.props.id)

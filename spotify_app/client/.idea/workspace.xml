@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9b5dfb4d-c3b1-4cd6-ae8d-0b579253b9cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../../Examples/youtube_api_example_UI/react-youtube-mp3-player" beforeDir="false" afterPath="$PROJECT_DIR$/../../Examples/youtube_api_example_UI/react-youtube-mp3-player" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MusicsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MusicsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/SpotifiesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SpotifiesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SpotifiesUpdate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SpotifiesUpdate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,8 @@
       <workItem from="1637844564395" duration="11210000" />
       <workItem from="1638242318483" duration="41000" />
       <workItem from="1638242940222" duration="4338000" />
-      <workItem from="1638301391080" duration="52999000" />
+      <workItem from="1638301391080" duration="54231000" />
+      <workItem from="1638638930092" duration="669000" />
     </task>
     <servers />
   </component>
