@@ -48,7 +48,7 @@ const createNewPlaylist = async (music) => {
 
     console.log(payload);
 
-    await api.insertSymphony(payload).then(res => {
+    await api.insertSpotify(payload).then(res => {
         window.alert(`Created new playlist: ` + playListName)
     })
 
@@ -74,25 +74,25 @@ const addToExistingPlaylist = async (music, i) => {
 
     console.log(payload);
 
-    await api.updateSymphonyById(playlist.id, payload).then(res => {
+    await api.updateSpotifyById(playlist.id, payload).then(res => {
         window.alert(`Added song to playlist: ` + playlist.playListName)
     })
 }
 
-const pullFromSymphony = async () => {
-    await api.getAllSymphonies().then(symphonies => {
-        console.log(symphonies.data.data);
+const pullFromSpotify = async () => {
+    await api.getAllSpotifies().then(spotifies => {
+        console.log(spotifies.data.data);
         listOfPlayList = [];
 
-        for (let i = 0; i < symphonies.data.data.length; i++) {
+        for (let i = 0; i < spotifies.data.data.length; i++) {
             let playListName = " ";
             let listOfMusic = [];
             let id = " ";
             let playlist = {playListName, listOfMusic, id};
 
-            playlist.id = symphonies.data.data[i]._id
-            playlist.playListName = symphonies.data.data[i].playlistname
-            playlist.listOfMusic = symphonies.data.data[i].listofsong
+            playlist.id = spotifies.data.data[i]._id
+            playlist.playListName = spotifies.data.data[i].playlistname
+            playlist.listOfMusic = spotifies.data.data[i].listofsong
 
             listOfPlayList.push(playlist)
         }
@@ -102,7 +102,7 @@ const pullFromSymphony = async () => {
 }
 
 const Musics = ({musics}) => {
-    pullFromSymphony()
+    pullFromSpotify()
 
     return (
         <>
@@ -125,13 +125,13 @@ const Musics = ({musics}) => {
                                     <tr>
                                         <React.Fragment key={index}>
                                             <td>
-                                                <a href={music.album.external_urls.symphony}>
+                                                <a href={music.album.external_urls.spotify}>
                                                     {music.album.name}
                                                 </a>
                                             </td>
 
                                             <td>
-                                                <a href={music.external_urls.symphony}>
+                                                <a href={music.external_urls.spotify}>
                                                     {music.name}
                                                 </a>
                                             </td>

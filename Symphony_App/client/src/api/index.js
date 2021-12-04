@@ -1,22 +1,21 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'http://3.143.218.228:8000/api',
+    baseURL: 'http://3.143.218.228::8000/api',
 })
 
-export const insertSymphony = payload => api.post(`/symphony`, payload)
-export const getAllSymphonies = () => api.get(`/symphonies`)
-export const updateSymphonyById = (id, payload) => api.put(`/symphony/${id}`, payload)
-export const deleteSymphonyById = id => api.delete(`/symphony/${id}`)
-export const getSymphonyById = id => api.get(`/symphony/${id}`)
+export const insertSpotify = payload => api.post(`/spotify`, payload)
+export const getAllSpotifies = () => api.get(`/spotifies`)
+export const updateSpotifyById = (id, payload) => api.put(`/spotify/${id}`, payload)
+export const deleteSpotifyById = id => api.delete(`/spotify/${id}`)
+export const getSpotifyById = id => api.get(`/spotify/${id}`)
 
 const apis = {
-    insertSymphony,
-    getAllSymphonies,
-    updateSymphonyById,
-    deleteSymphonyById,
-    getSymphonyById,
+    insertSpotify,
+    getAllSpotifies,
+    updateSpotifyById,
+    deleteSpotifyById,
+    getSpotifyById,
 }
 
 export default apis
-
